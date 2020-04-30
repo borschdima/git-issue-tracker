@@ -1,0 +1,50 @@
+.issues {
+	// background: #fdc830; /* fallback for old browsers */
+	// background: -webkit-linear-gradient(to right, #f37335, #fdc830); /* Chrome 10-25, Safari 5.1-6 */
+	// background: linear-gradient(to right, #f37335, #fdc830); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+	background: #7f7fd5; /* fallback for old browsers */
+	background: -webkit-linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5); /* Chrome 10-25, Safari 5.1-6 */
+	background: linear-gradient(to right, #91eae4, #86a8e7, #7f7fd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+	&__form {
+		margin: 10px;
+	}
+
+	.form {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		color: #fff;
+
+		&__input {
+			color: #fff;
+
+			&:focus {
+				color: #fff;
+			}
+
+			& + label {
+				color: #fff;
+			}
+
+			&:-webkit-autofill,
+			&:-webkit-autofill:hover,
+			&:-webkit-autofill:focus {
+				border: none;
+				color: #fff !important;
+				-webkit-text-fill-color: #fff;
+				box-shadow: 0 0 0px 1000px transparent inset !important;
+				-webkit-box-shadow: 0 0 0px 1000px transparent inset !important;
+				transition: background-color 5000s ease-in-out 0s !important;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 480px) {
+	.issues {
+		.form {
+			flex-direction: column;
+		}
+	}
+}

@@ -1,0 +1,4 @@
+export default {
+	CLIENT_ID: "59e5655a1030f793f2f0",
+	CLIENT_SECRET: "028d5f48d5e8547c2c8653d7d4c4af7f743a7c14",
+};
