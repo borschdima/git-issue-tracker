@@ -3,8 +3,8 @@ import { MDBPagination, MDBPageItem, MDBPageNav } from "mdbreact";
 
 import "./Pagination.scss";
 
-const Pagination = ({ pagesLength, onPageChange }) => {
-	const [activeItem, setActiveItem] = useState(0);
+const Pagination = ({ pagesLength, currentPage, onPageChange }) => {
+	const [activeItem, setActiveItem] = useState(currentPage);
 
 	// Render pagination numbers
 	const createPages = () => {
