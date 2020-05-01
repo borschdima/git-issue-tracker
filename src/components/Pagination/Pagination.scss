@@ -1,0 +1,19 @@
+.my-pagination {
+	margin: 20px 0;
+	justify-content: center;
+	flex-wrap: wrap;
+
+	.page-item .page-link {
+		color: #e7e6e6 !important;
+		font-weight: bold;
+	}
+
+	.page-item .page-link:hover {
+		color: #cac5c5 !important;
+		background-color: transparent !important;
+	}
+
+	.page-item.active .page-link:hover {
+		background-color: #2b5dbb !important;
+	}
+}

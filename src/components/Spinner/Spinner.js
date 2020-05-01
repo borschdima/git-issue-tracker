@@ -2,7 +2,7 @@ import React from "react";
 
 import "./Spinner.scss";
 
-const Spinner = () => {
+const Spinner = ({ color }) => {
 	return (
 		<div className="spinner">
 			<div />

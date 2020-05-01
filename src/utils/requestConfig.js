@@ -11,9 +11,9 @@ export const request = async (url, body = null, method = "GET", params = null, t
 	if (token) config.headers.Authorization = `token ${token}`;
 
 	try {
-		const { data } = await axios(url, config);
+		const { data, headers } = await axios(url, config);
 
-		return data;
+		return { data, headers };
 	} catch (error) {
 		throw new Error(error.message);
 	}

@@ -1,6 +1,7 @@
 import { ERROR, LOADING, AUTH_SUCCESS, FETCH_SUCCESS } from "./actionTypes";
 import { request } from "../../utils/requestConfig";
 import config from "../../config/config";
+import parse from "parse-link-header";
 
 export function auth(code) {
 	return async (dispatch) => {
@@ -11,27 +12,27 @@ export function auth(code) {
 				client_secret: config.CLIENT_SECRET,
 				code,
 			};
-			const { access_token } = await request(
-				"https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token",
-				null,
-				"POST",
-				params
-			);
+			const { data } = await request("https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token", null, "POST", params);
 
-			dispatch(authSuccess(access_token));
+			dispatch(authSuccess(data.access_token));
 		} catch (error) {
 			dispatch(triggerError());
 		}
 	};
 }
 
-export function fetchIssues(owner, repo, token) {
+export function fetchIssues(owner, repo, token, page = "1") {
 	return async (dispatch) => {
 		dispatch(startLoading());
 		try {
-			const issues = await request(`https://api.github.com/repos/${owner}/${repo}/issues`, null, "GET", null, token);
+			const params = {
+				page,
+			};
+			const { data, headers } = await request(`https://api.github.com/repos/${owner}/${repo}/issues`, null, "GET", params, token);
 
-			dispatch(fetchSuccess(issues));
+			const parsed = parse(headers.link);
+
+			dispatch(fetchSuccess(data, +parsed.last.page - 1));
 		} catch (error) {
 			dispatch(triggerError());
 		}
@@ -57,9 +58,10 @@ export function authSuccess(token) {
 	};
 }
 
-export function fetchSuccess(issues) {
+export function fetchSuccess(issues, pagesCount) {
 	return {
 		type: FETCH_SUCCESS,
-		payload: issues,
+		issues,
+		pagesCount,
 	};
 }

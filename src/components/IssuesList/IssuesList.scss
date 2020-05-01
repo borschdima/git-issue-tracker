@@ -1,0 +1,52 @@
+.issues-list {
+	list-style: none;
+	padding: 15px;
+	border-radius: 10px;
+	background-color: #fff;
+
+	&__item {
+		margin: 5px 0;
+		padding: 5px 0;
+		cursor: pointer;
+
+		&:hover {
+			transition: 0.4s ease;
+			background-color: #eaf1f5;
+		}
+	}
+
+	&__avatar {
+		width: 50px;
+		height: 50px;
+		border-radius: 50%;
+		overflow: hidden;
+		margin-right: 15px;
+
+		img {
+			width: 100%;
+		}
+	}
+
+	&__title {
+		font-size: 0.9rem;
+		color: #4e4d4d;
+		flex: 1;
+	}
+
+	&__time {
+		text-align: right;
+		font-weight: bold;
+		font-size: 0.9rem;
+		margin-left: 15px;
+		color: #302f2f;
+		text-align: right;
+	}
+}
+
+@media screen and (max-width: 576px) {
+	.issues-list {
+		&__time {
+			display: none;
+		}
+	}
+}

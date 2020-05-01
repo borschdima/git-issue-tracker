@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
-import { Home, Auth, Issues } from "./pages";
+import { Home, Auth, Issues, IssueDetails } from "./pages";
 
 function App() {
 	const { token } = useSelector((state) => state);
@@ -10,8 +10,9 @@ function App() {
 		return (
 			<Router>
 				<Switch>
-					<Route path="/issues" component={Issues} />
-					<Redirect to="/issues" />
+					<Route path="/issues" exact component={Issues} />
+					<Route path="/issues/:id" component={IssueDetails} />
+					<Redirect to="/issues" exact />
 				</Switch>
 			</Router>
 		);
@@ -22,7 +23,7 @@ function App() {
 			<Switch>
 				<Route path="/" exact component={Home} />
 				<Route path="/user/signin/callback" component={Auth} />
-				<Redirect to="/" />
+				<Redirect to="/" exact />
 			</Switch>
 		</Router>
 	);
