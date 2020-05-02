@@ -11,12 +11,8 @@ import "./Issues.scss";
 const Issues = () => {
 	const dispatch = useDispatch();
 
-	// Local state
-	// const [values, setValues] = useState({ owner: "", repo: "" });
 	// Global state
 	const { token, issues, pagesCount, ownerName, repoName, currentPage } = useSelector((state) => state);
-
-	// const onValueChange = (e) => setValues({ ...values, [e.target.name]: e.target.value });
 
 	const onClickHandler = () => {
 		if (ownerName && repoName) {
